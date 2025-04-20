@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+nav {
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#services {
+  text-align: center;
+}
+
+#services ul {
+  display: inline-block;
+  text-align: left;
+}
+
+
+nav .logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+}
+
+.slider {
+  display: flex;
+  width: 300%;
+  animation: slide 15s infinite;
+}
+
+.slide {
+  flex: 1 0 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 50%;
+  height: 600px;
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* Buttons*/
+button {
+  background-color: #007BFF; /* Bootstrap blue */
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 1rem auto;
+  display: block; /* makes it easier to center */
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* darker blue on hover */
+}
+
+/* Card properties*/
+.card {
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding: 1rem;
+}
+
+.card img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* card buttons centering*/
+.card button {
+  display: block;
+  margin: 1rem auto 0.5 rem auto; /* center horizontally with margin */
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #0056b3;
+}
+
+.card-details {
+  display: none;
+  margin-top: 1rem;
+}
+
+.card-details.visible {
+  display: block;
+}
+
+
+
+
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+  100% { transform: translateX(0); }
+}
+
+section {
+  padding: 2rem;
+  margin: 1rem 0;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0;
+  
+}
+
+.award-card {
+  background: #f1f1f1;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.award-card img {
+  width: 100%;
+  height: auto;
+}
+
+.profile-card {
+  background-color: #e9ecef;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.profile-img {
+  width: 250x;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.profile-details {
+  display: none;
+  text-align: left;
+}
+
+.profile-details.visible {
+  display: block;
+}
+
+.profile-card {
+  background-color: #e9ecef;
+  padding: 2rem;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 400px;
+  margin: 2rem auto; /* this centers it horizontally */
+}
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
