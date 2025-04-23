@@ -1,20 +1,37 @@
 const cardContainer = document.getElementById("card-container");
 const loadUsersBtn = document.getElementById("load-users");
 
-// Limit the number of cards to 6
-const MAX_CARDS = 6;
+// Max number of cards shown at once
+const MAX_CARDS = 8;
 
-loadUsersBtn.addEventListener("click", () => {
-  fetch("https://randomuser.me/api/?results=6")
+// Track all loaded users
+let allUsers = [];
+
+function loadInitialUsers() {
+  fetch("https://randomuser.me/api/?results=8")
     .then((res) => res.json())
     .then((data) => {
-      cardContainer.innerHTML = ""; // Clear previous cards
-      data.results.forEach((user) => {
-        const card = createUserCard(user);
-        cardContainer.appendChild(card);
-      });
+      allUsers = data.results;
+      renderCards(allUsers);
+    });
+}
+
+loadUsersBtn.addEventListener("click", () => {
+  fetch("https://randomuser.me/api/?results=4")
+    .then((res) => res.json())
+    .then((data) => {
+      allUsers = [...allUsers, ...data.results];
+      renderCards(allUsers.slice(-MAX_CARDS)); // Keep only the latest 8
     });
 });
+
+function renderCards(users) {
+  cardContainer.innerHTML = "";
+  users.forEach((user) => {
+    const card = createUserCard(user);
+    cardContainer.appendChild(card);
+  });
+}
 
 function createUserCard(user) {
   const card = document.createElement("div");
@@ -51,18 +68,16 @@ function getFlagEmoji(countryCode) {
     );
 }
 
+// Profile toggle
+document.getElementById("toggle-profile").addEventListener("click", function () {
+  const profileDetails = document.querySelector(".profile-details");
+  profileDetails.classList.toggle("visible");
+  profileDetails.classList.toggle("hidden");
 
-  document.getElementById("toggle-profile").addEventListener("click", function () {
-    const profileDetails = document.querySelector(".profile-details");
-    profileDetails.classList.toggle("visible");
-    profileDetails.classList.toggle("hidden");
-    
-    // Optionally change button text
-    if (profileDetails.classList.contains("visible")) {
-      this.textContent = "Hide Profile";
-    } else {
-      this.textContent = "View Profile";
-    }
-  });
+  this.textContent = profileDetails.classList.contains("visible")
+    ? "Hide Profile"
+    : "View Profile";
+});
 
-
+// Load first 8 users when page loads
+window.addEventListener("DOMContentLoaded", loadInitialUsers);
